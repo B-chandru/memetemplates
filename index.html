@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="meme templates are in one place u ">
+     <meta name="keywords" content="memetemplates, famous meme templates">
+    <title>meme templates</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1 id="h1">memes template :)</h1>
+    <h2>meme templates in one place</h2>
+</header>
+    <div  class="container">
+    </div>
+    <script>
+        window.onload=()=>{
+            fetch(`https://api.imgflip.com/get_memes`)
+            .then(res=> res.json())
+            .then(data => data.data.memes.map((data)=>{
+                var main = document.querySelector(".container");
+                var hero=`<div class="card card_large" >
+                    <h2>${data.name}</h2>
+                   <img id="image" src="${data.url}" alt="" width="100%">
+                    <button id="btn"> <a href="${data.url}" target="_blank" rel="noopener noreferrer">download</a></button>
+                    </div>`
+                    main.insertAdjacentHTML('beforeend', hero);
+                }))
+                .catch(err => console.log(`error: ${err}`))   
+                }
+       
+            </script>
+ 
+    
+</body>
+</html>
